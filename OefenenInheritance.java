@@ -67,7 +67,7 @@ class Drank extends Voedingsmiddel implements vloeistof{
 	
 }//end class Drank
 
-class Cola extends Drank implements vloeistof{
+class Cola extends Drank {
 	int suikergehalte;
 	vloeistof merk;
 	
