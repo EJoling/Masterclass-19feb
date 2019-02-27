@@ -21,7 +21,7 @@ public class OefenenInheritance {
 		System.out.println("vm.voeding: " + vm.voeding);
 		
 		cola.druppelen();
-		
+		cola.drinken(cola);
 		
 		
 	}//end main
