@@ -1,7 +1,7 @@
 
 public class OefenenInheritance {
 	public static void main(String[]args) {
-		
+
 		Brandstof bs = new Benzine();
 		System.out.println(bs.brandlucht);
 		System.out.println(bs.brandbaar);
@@ -10,21 +10,32 @@ public class OefenenInheritance {
 		System.out.println(bs.brandbaar);
 		
 		
-		Cola cola = new Cola();
-		System.out.println("cola.voeding: " + cola.voeding);
-		cola.bederven();
-		System.out.println("cola.voeding: " + cola.voeding);
+		Spa spa = new Spa();
+		System.out.println("spa.voeding: " + spa.voeding);
+		spa.bederven();
+		System.out.println("spa.voeding: " + spa.voeding);
 		
 		Voedingsmiddel vm = new Drank();
 		System.out.println("vm.voeding: " + vm.voeding);
 		vm.bederven();
 		System.out.println("vm.voeding: " + vm.voeding);
 		
-		cola.druppelen();
-		cola.drinken(cola);
+		spa.druppelen();
+		
+		// print nu een plek uit ipv object
+		System.out.println(flesjeVullen(10));
+		
 		
 		
 	}//end main
+	
+	static vloeistof flesjeVullen(int geld) {
+		if(geld <6){
+			return new Spa();
+		}
+		else return new Benzine();
+	}
+	
 }//end OefenenInheritance
 
 	// Eerste erfboom
@@ -67,19 +78,20 @@ class Drank extends Voedingsmiddel implements vloeistof{
 	
 }//end class Drank
 
-class Cola extends Drank {
+class Spa extends Drank {
 	int suikergehalte;
-	vloeistof merk;
+	int temp;
 	
 	public void druppelen() {
-		System.out.println("Drup drup drup... in Cola");
+		System.out.println("Drup drup drup... in Spa");
 	}//end methode druppelen
 	
-	 void drinken(vloeistof vs){
-		merk = vs;
+	 void drinken(){
+		
 	}//end methode drinken
 	
-}//end class Cola
+}//end class Spa
+
 
 
 	//Tweede erfboom
@@ -122,6 +134,83 @@ interface vloeistof{
 }
 
 
+/*		
+		
+		Bloemkweker bart = new Bloemkweker();
+		bart.groeien();
+		bart.groeien();
+		bart.groeien();
+		System.out.println("Gewicht Bart: " + bart.biomassa  );
+		
+		TulpBol t = new TulpBol();
+		Bloem a = bart.bloemKweken(t);
+		a.groeien();
+		a.groeien();
+		a.groeien();
+		System.out.println("Gewicht Bloem: "+a.biomassa);
+		
+		System.out.println("Zijn de handen van Bart vies: " + bart.HandenVies);
+		
+	}//end main
+}//end OefenenInheritance
+
+abstract class Bloem implements groei{
+	int biomassa;
+	String naam;
+	
+	abstract public void groeien();
+}//end class Bloem
+
+
+class Tulp extends Bloem{
+	int biomassa = 1;
+	
+	public void groeien(){
+		biomassa++;
+	}//end groeien
+	void geurVerspreiden(){
+		System.out.println("Tulpengeur");
+	}//end geurVerspreiden
+}//end class Bloembol
+
+
+class TulpBol extends Tulp{
+	String naam = "tulp";
+
+	void bederven(){
+		biomassa--;
+	}
+	
+}//end class Tulp
+
+
+
+class Mens implements groei{
+	String naam;
+	int biomassa = 10;
+	
+	public void groeien() {
+		biomassa = (biomassa*2);
+	};//end methode groeien
+}//end class Mens
+
+class Bloemkweker extends Mens{
+	boolean HandenVies = false;
+	
+	Bloem bloemKweken(TulpBol t) {
+		t.biomassa = 4;
+		HandenVies = true;
+		return new Tulp();
+	}//end BloemKweken
+	
+}//end class Bloemkweker
+
+
+interface groei{
+	void groeien();
+}
+
+*/
 
 
 
